@@ -1,10 +1,6 @@
 {
   "dependencies": [
     [
-      "fourseven:scss",
-      "1.0.0"
-    ],
-    [
       "meteor",
       "1.1.3"
     ],

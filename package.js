@@ -1,49 +1,55 @@
 Package.describe({
-  name: 'meteoric:ionic-sass',
-  summary: "Ionic's CSS Framework in SASS and bundled for Meteor.",
+  name: 'koolaid1551:ionic-stylus',
+  summary: "Ionic's CSS Framework in stylus format and bundled for Meteor.",
   version: '0.1.9',
-  git: 'https://github.com/meteoric/ionic-sass'
+  git: 'https://github.com/koolaid1551/ionic-stylus'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.0');
-  api.use("fourseven:scss@2.0.0", ["server"]);
-  api.imply("fourseven:scss", ["server"]);
+  //disabled versionsFrom for now - causing trouble on windows
+  //api.versionsFrom('1.0');
+  
+  //api.use("stylus", ["server"]);
+  //api.imply("stylus", ["server"]);
+  //using s-jeet since the stylus package is currently out of date
+  //https://github.com/meteor/meteor/pull/3749
+  api.use("juliancwirko:s-jeet", ["server"]);
+  api.imply("juliancwirko:s-jeet", ["server"]);
 
   api.addFiles([
-    'stylesheets/_action-sheet.scss',
-    'stylesheets/_animations.scss',
-    'stylesheets/_backdrop.scss',
-    'stylesheets/_badge.scss',
-    'stylesheets/_bar.scss',
-    'stylesheets/_button-bar.scss',
-    'stylesheets/_button.scss',
-    'stylesheets/_checkbox.scss',
-    'stylesheets/_form.scss',
-    'stylesheets/_grid.scss',
-    'stylesheets/_items.scss',
-    'stylesheets/_list.scss',
-    'stylesheets/_loading.scss',
-    'stylesheets/_menu.scss',
-    'stylesheets/_mixins.scss',
-    'stylesheets/_modal.scss',
-    'stylesheets/_platform.scss',
-    'stylesheets/_popover.scss',
-    'stylesheets/_popup.scss',
-    'stylesheets/_progress.scss',
-    'stylesheets/_radio.scss',
-    'stylesheets/_range.scss',
-    'stylesheets/_reset.scss',
-    'stylesheets/_scaffolding.scss',
-    'stylesheets/_select.scss',
-    'stylesheets/_slide-box.scss',
-    'stylesheets/_tabs.scss',
-    'stylesheets/_toggle.scss',
-    'stylesheets/_transitions.scss',
-    'stylesheets/_type.scss',
-    'stylesheets/_util.scss',
-    'stylesheets/_variables.scss'
+    'stylus/_action-sheet.styl',
+    'stylus/_animations.styl',
+    'stylus/_backdrop.styl',
+    'stylus/_badge.styl',
+    'stylus/_bar.styl',
+    'stylus/_button-bar.styl',
+    'stylus/_button.styl',
+    'stylus/_checkbox.styl',
+    'stylus/_form.styl',
+    'stylus/_grid.styl',
+    'stylus/_items.styl',
+    'stylus/_list.styl',
+    'stylus/_loading.styl',
+    'stylus/_menu.styl',
+    'stylus/_mixins.styl',
+    'stylus/_modal.styl',
+    'stylus/_platform.styl',
+    'stylus/_popover.styl',
+    'stylus/_popup.styl',
+    'stylus/_progress.styl',
+    'stylus/_radio.styl',
+    'stylus/_range.styl',
+    'stylus/_reset.styl',
+    'stylus/_scaffolding.styl',
+    'stylus/_select.styl',
+    'stylus/_slide-box.styl',
+    'stylus/_tabs.styl',
+    'stylus/_toggle.styl',
+    'stylus/_transitions.styl',
+    'stylus/_type.styl',
+    'stylus/_util.styl',
+    'stylus/_variables.styl'
   ], 'server');
 
-  api.addFiles('_ionic.scss', 'server');
+  api.addFiles('_ionic.styl', 'server');
 });

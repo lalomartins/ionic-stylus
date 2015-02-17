@@ -1,0 +1,428 @@
+// Button Mixins
+// --------------------------------------------------
+button-style($bg-color, $border-color, $active-bg-color, $active-border-color, $color)
+  border-color: $border-color
+  background-color: $bg-color
+  color: $color
+  // Give desktop users something to play with
+  &:hover
+    color: $color
+    text-decoration: none
+  &.active,
+  &.activated
+    border-color: $active-border-color
+    background-color: $active-bg-color
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1)
+button-clear($color, $font-size = "")
+  &.button-clear
+    border-color: transparent
+    background: none
+    box-shadow: none
+    color: $color
+    if $font-size != ""
+      font-size: $font-size
+  &.button-icon
+    border-color: transparent
+    background: none
+button-outline($color, $text-color = "")
+  &.button-outline
+    border-color: $color
+    background: transparent
+    if $text-color == ""
+      $text-color = $color
+    color: $text-color
+    &.active,
+    &.activated
+      background-color: $color
+      box-shadow: none
+      color: #fff
+// Bar Mixins
+// --------------------------------------------------
+bar-style($bg-color, $border-color, $color)
+  border-color: $border-color
+  background-color: $bg-color
+  background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%)
+  color: $color
+  .title
+    color: $color
+// Tab Mixins
+// --------------------------------------------------
+tab-style($bg-color, $border-color, $color)
+  border-color: $border-color
+  background-color: $bg-color
+  background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%)
+  color: $color
+tab-badge-style($bg-color, $color)
+  .tab-item .badge
+    background-color: $bg-color
+    color: $color
+// Item Mixins
+// --------------------------------------------------
+item-style($bg-color, $border-color, $color)
+  border-color: $border-color
+  background-color: $bg-color
+  color: $color
+item-active-style($active-bg-color, $active-border-color)
+  border-color: $active-border-color
+  background-color: $active-bg-color
+// Badge Mixins
+// --------------------------------------------------
+badge-style($bg-color, $color)
+  background-color: $bg-color
+  color: $color
+// Range Mixins
+// --------------------------------------------------
+range-style($track-bg-color)
+  &::-webkit-slider-thumb:before
+    background: $track-bg-color
+// Checkbox Mixins
+// --------------------------------------------------
+checkbox-style($off-border-color, $on-bg-color, $on-border-color)
+  & input:before,
+  & .checkbox-icon:before
+    border-color: $off-border-color
+  // what the background looks like when its checked
+  & input:checked:before,
+  & input:checked + .checkbox-icon:before
+    background: $on-bg-color
+    border-color: $on-border-color
+// Toggle Mixins
+// --------------------------------------------------
+toggle-style($on-border-color, $on-bg-color)
+  // the track when the toggle is "on"
+  & input:checked + .track
+    border-color: $on-border-color
+    background-color: $on-bg-color
+// Clearfix
+// --------------------------------------------------
+clearfix()
+  *zoom: 1
+  &:before,
+  &:after
+    display: table
+    content: ""
+    line-height: 0
+  &:after
+    clear: both
+// Placeholder text
+// --------------------------------------------------
+placeholder($color = $input-color-placeholder, $text-indent = 0)
+  &::-moz-placeholder
+    // Firefox 19+
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+  &::-webkit-input-placeholder
+    color: $color
+    // Safari placeholder margin issue
+    text-indent: $text-indent
+// Text Mixins
+// --------------------------------------------------
+text-size-adjust($value = none)
+  -webkit-text-size-adjust: $value
+  -moz-text-size-adjust: $value
+  text-size-adjust: $value
+tap-highlight-transparent()
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  -webkit-tap-highlight-color: transparent
+  // For some Androids
+touch-callout($value = none)
+  -webkit-touch-callout: $value
+// Font Mixins
+// --------------------------------------------------
+font-family-serif()
+  font-family: $serif-font-family
+font-family-sans-serif()
+  font-family: $sans-font-family
+font-family-monospace()
+  font-family: $mono-font-family
+font-shorthand($size = $base-font-size, $weight = normal, $line-height = $base-line-height)
+  font-weight: $weight
+  font-size: $size
+  line-height: $line-height
+font-serif($size = $base-font-size, $weight = normal, $line-height = $base-line-height)
+  font-family-serif()
+  font-shorthand($size, $weight, $line-height)
+font-sans-serif($size = $base-font-size, $weight = normal, $line-height = $base-line-height)
+  font-family-sans-serif()
+  font-shorthand($size, $weight, $line-height)
+font-monospace($size = $base-font-size, $weight = normal, $line-height = $base-line-height)
+  font-family-monospace()
+  font-shorthand($size, $weight, $line-height)
+font-smoothing($font-smoothing)
+  -webkit-font-smoothing: $font-smoothing
+  font-smoothing: $font-smoothing
+// Appearance
+// --------------------------------------------------
+appearance($val)
+  -webkit-appearance: $val
+  -moz-appearance: $val
+  appearance: $val
+// Border Radius Mixins
+// --------------------------------------------------
+border-radius($radius)
+  -webkit-border-radius: $radius
+  border-radius: $radius
+// Single Corner Border Radius
+border-top-left-radius($radius)
+  -webkit-border-top-left-radius: $radius
+  border-top-left-radius: $radius
+border-top-right-radius($radius)
+  -webkit-border-top-right-radius: $radius
+  border-top-right-radius: $radius
+border-bottom-right-radius($radius)
+  -webkit-border-bottom-right-radius: $radius
+  border-bottom-right-radius: $radius
+border-bottom-left-radius($radius)
+  -webkit-border-bottom-left-radius: $radius
+  border-bottom-left-radius: $radius
+// Single Side Border Radius
+border-top-radius($radius)
+  border-top-right-radius($radius)
+  border-top-left-radius($radius)
+border-right-radius($radius)
+  border-top-right-radius($radius)
+  border-bottom-right-radius($radius)
+border-bottom-radius($radius)
+  border-bottom-right-radius($radius)
+  border-bottom-left-radius($radius)
+border-left-radius($radius)
+  border-top-left-radius($radius)
+  border-bottom-left-radius($radius)
+// Box shadows
+// --------------------------------------------------
+box-shadow($shadow)
+  -webkit-box-shadow: $shadow
+  box-shadow: $shadow
+// Transition Mixins
+// --------------------------------------------------
+transition($transition)
+  -webkit-transition: $transition
+  transition: $transition
+transition-delay($transition-delay)
+  -webkit-transition-delay: $transition-delay
+  transition-delay: $transition-delay
+transition-duration($transition-duration)
+  -webkit-transition-duration: $transition-duration
+  transition-duration: $transition-duration
+transition-timing-function($transition-timing)
+  -webkit-transition-timing-function: $transition-timing
+  transition-timing-function: $transition-timing
+transition-property($property)
+  -webkit-transition-property: $property
+  transition-property: $property
+transition-transform()
+  // special case cuz of transform vendor prefixes
+  -webkit-transition: -webkit-transform $properties
+  transition: transform $properties
+// Animation Mixins
+// --------------------------------------------------
+animation($animation)
+  -webkit-animation: $animation
+  animation: $animation
+animation-duration($duration)
+  -webkit-animation-duration: $duration
+  animation-duration: $duration
+animation-direction($direction)
+  -webkit-animation-direction: $direction
+  animation-direction: $direction
+animation-timing-function($animation-timing)
+  -webkit-animation-timing-function: $animation-timing
+  animation-timing-function: $animation-timing
+animation-fill-mode($fill-mode)
+  -webkit-animation-fill-mode: $fill-mode
+  animation-fill-mode: $fill-mode
+animation-name($name)
+  -webkit-animation-name: $name
+  animation-name: $name
+animation-iteration-count($count)
+  -webkit-animation-iteration-count: $count
+  animation-iteration-count: $count
+// Transformation Mixins - removed as they are causing infinite loops
+// --------------------------------------------------
+/*
+rotate($degrees)
+  transform(rotate($degrees))
+scale($ratio)
+  transform(scale($ratio))
+translate($x, $y)
+  transform(translate($x, $y))
+skew($x, $y)
+  transform(skew($x, $y))
+  -webkit-backface-visibility: hidden
+translate3d($x, $y, $z)
+  transform(translate3d($x, $y, $z))
+translateZ($z)
+  transform(translateZ($z))
+transform($val)
+  -webkit-transform: $val
+  transform: $val
+transform-origin($left, $top)
+  -webkit-transform-origin: $left $top
+  transform-origin: $left $top
+*/
+// Backface visibility
+// --------------------------------------------------
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+backface-visibility($visibility)
+  -webkit-backface-visibility: $visibility
+  backface-visibility: $visibility
+// Background clipping
+// --------------------------------------------------
+background-clip($clip)
+  -webkit-background-clip: $clip
+  background-clip: $clip
+// Background sizing
+// --------------------------------------------------
+background-size($size)
+  -webkit-background-size: $size
+  background-size: $size
+// Box sizing
+// --------------------------------------------------
+box-sizing($boxmodel)
+  -webkit-box-sizing: $boxmodel
+  -moz-box-sizing: $boxmodel
+  box-sizing: $boxmodel
+// User select
+// --------------------------------------------------
+user-select($select)
+  -webkit-user-select: $select
+  -moz-user-select: $select
+  -ms-user-select: $select
+  user-select: $select
+// Content Columns
+// --------------------------------------------------
+content-columns($columnCount, $columnGap = $grid-gutter-width)
+  -webkit-column-count: $columnCount
+  -moz-column-count: $columnCount
+  column-count: $columnCount
+  -webkit-column-gap: $columnGap
+  -moz-column-gap: $columnGap
+  column-gap: $columnGap
+// Flexbox Mixins
+// --------------------------------------------------
+// http://philipwalton.github.io/solved-by-flexbox/
+// https://github.com/philipwalton/solved-by-flexbox
+display-flex()
+  display: -webkit-box
+  display: -webkit-flex
+  display: -moz-box
+  display: -moz-flex
+  display: -ms-flexbox
+  display: flex
+display-inline-flex()
+  display: -webkit-inline-box
+  display: -webkit-inline-flex
+  display: -moz-inline-flex
+  display: -ms-inline-flexbox
+  display: inline-flex
+flex-direction($value = row)
+  if $value == row-reverse
+    -webkit-box-direction: reverse
+    -webkit-box-orient: horizontal
+  else if $value == column
+    -webkit-box-direction: normal
+    -webkit-box-orient: vertical
+  else if $value == column-reverse
+    -webkit-box-direction: reverse
+    -webkit-box-orient: vertical
+  else
+    -webkit-box-direction: normal
+    -webkit-box-orient: horizontal
+  -webkit-flex-direction: $value
+  -moz-flex-direction: $value
+  -ms-flex-direction: $value
+  flex-direction: $value
+flex-wrap($value = nowrap)
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value
+  -moz-flex-wrap: $value
+  if $value == nowrap
+    -ms-flex-wrap: none
+  else
+    -ms-flex-wrap: $value
+  flex-wrap: $value
+flex($fg = 1, $fs = null, $fb = null)
+  -webkit-box-flex: $fg
+  -webkit-flex: $fg $fs $fb
+  -moz-box-flex: $fg
+  -moz-flex: $fg $fs $fb
+  -ms-flex: $fg $fs $fb
+  flex: $fg $fs $fb
+flex-flow($values = row nowrap)
+  // No Webkit Box fallback.
+  -webkit-flex-flow: $values
+  -moz-flex-flow: $values
+  -ms-flex-flow: $values
+  flex-flow: $values
+align-items($value = stretch)
+  if $value == flex-start
+    -webkit-box-align: start
+    -ms-flex-align: start
+  else if $value == flex-end
+    -webkit-box-align: end
+    -ms-flex-align: end
+  else
+    -webkit-box-align: $value
+    -ms-flex-align: $value
+  -webkit-align-items: $value
+  -moz-align-items: $value
+  align-items: $value
+align-self($value = auto)
+  -webkit-align-self: $value
+  -moz-align-self: $value
+  if $value == flex-start
+    -ms-flex-item-align: start
+  else if $value == flex-end
+    -ms-flex-item-align: end
+  else
+    -ms-flex-item-align: $value
+  align-self: $value
+align-content($value = stretch)
+  -webkit-align-content: $value
+  -moz-align-content: $value
+  if $value == flex-start
+    -ms-flex-line-pack: start
+  else if $value == flex-end
+    -ms-flex-line-pack: end
+  else
+    -ms-flex-line-pack: $value
+  align-content: $value
+justify-content($value = stretch)
+  if $value == flex-start
+    -webkit-box-pack: start
+    -ms-flex-pack: start
+  else if $value == flex-end
+    -webkit-box-pack: end
+    -ms-flex-pack: end
+  else if $value == space-between
+    -webkit-box-pack: justify
+    -ms-flex-pack: justify
+  else
+    -webkit-box-pack: $value
+    -ms-flex-pack: $value
+  -webkit-justify-content: $value
+  -moz-justify-content: $value
+  justify-content: $value
+flex-order($n)
+  -webkit-order: $n
+  -ms-flex-order: $n
+  order: $n
+  -webkit-box-ordinal-group: $n
+responsive-grid-break($selector, $max-width)
+  @media (max-width: $max-width)
+    {$selector}
+      -webkit-box-direction: normal
+      -moz-box-direction: normal
+      -webkit-box-orient: vertical
+      -moz-box-orient: vertical
+      -webkit-flex-direction: column
+      -ms-flex-direction: column
+      flex-direction: column
+      .col, .col-10, .col-20, .col-25, .col-33, .col-34, .col-50, .col-66, .col-67, .col-75, .col-80, .col-90
+        flex(1)
+        margin-bottom: ($grid-padding-width * 3 / 2)
+        margin-left: 0
+        max-width: 100%
+        width: 100%
