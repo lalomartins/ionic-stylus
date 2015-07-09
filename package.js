@@ -13,8 +13,8 @@ Package.onUse(function(api) {
   //api.imply("stylus", ["server"]);
   //using s-jeet since the stylus package is currently out of date
   //https://github.com/meteor/meteor/pull/3749
-  api.use("cryptoquick:stylus-multi", ["server"]);
-  api.imply("cryptoquick:stylus-multi", ["server"]);
+  api.use("mquandalle:stylus", ["server"]);
+  api.imply("mquandalle:stylus", ["server"]);
 
   api.addFiles([
     'stylus/_action-sheet.styl',
